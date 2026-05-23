@@ -1,0 +1,21 @@
+workflows:
+  android-apk-workflow:
+    name: Android APK Workflow
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      flutter: stable
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+      - name: Build APK
+        script: |
+          flutter build apk --target=lib/main.dart --release
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+    publishing:
+      email:
+        recipients:
+          - caio2426@gmail.com
+          
