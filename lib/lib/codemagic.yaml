@@ -1,0 +1,27 @@
+workflows:
+  android-apk-workflow:
+    name: Android APK Workflow
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      groups:
+        - google_play
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Set up local.properties
+        script: |
+          echo "flutter.sdk=$HOME/programs/flutter" > android/local.properties
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+      - name: Build APK
+        script: |
+          flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+    publishing:
+      email:
+        recipients:
+          - caio2426@gmail.com
