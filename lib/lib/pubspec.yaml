@@ -1,0 +1,16 @@
+name: legend_ai_app
+description: Aplicativo de legenda de vídeo com IA.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  video_player: ^2.8.2
+  file_picker: ^8.0.0
+
+flutter:
+  uses-material-design: true
+  
